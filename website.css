@@ -1,0 +1,21 @@
+html {
+    background-color: lightgreen;
+    font-family: 'Courier new';
+    font-size: 150%;
+    text-align: center;
+}
+
+form{
+    border: 10px;
+    border-style: double;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: brown;
+    margin-left: 450px;
+    margin-right: 450px
+}
+
+input{
+    font-size: 15px;
+    font-family: 'roman regular';
+}

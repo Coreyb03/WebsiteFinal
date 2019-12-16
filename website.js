@@ -3,11 +3,12 @@ function ready() {
     var arabic = document.getElementById("arabic").value;
     console.log(arabic);
     var roman = document.getElementById("roman");
-    console.log(A2R(roman));
+    console.log(A2R(arabic));
+    console.log(R2A(roman));
     // makes sure the roman text box is empty
     if( document.getElementById("arabic").value.length == 0) {
-        document.getElementById("arabic").value = R2A(roman);
-    }else{
+        document.getElementById("arabic").value = R2A(roman.value);
+    }if (document.getElementById("roman").value.length == 0) {
         document.getElementById("roman").value = A2R(arabic);
     }
     clear.onclick = function(){
@@ -17,6 +18,9 @@ function ready() {
     }
     function A2R(arabic) {
         // arabic to roman
+        if (arabic <0){
+            return "No negitives"
+        } 
         var roman = "";
         while (arabic - 1000 >= 0){
             roman += "M";
@@ -74,16 +78,17 @@ function ready() {
     }
 // roman numeral to arabic
 
-    function R2A(roman){
+    function R2A(x){
         var char;
         var val;
         // the i value higher
         var val1;
         var char1;
-        var arabic = "";
-        for(i = 0;i < roman.length; i++){
-            char = roman.charAt(i);
-            char1 = roman.charAt(i+1);
+        var arabicval = 0;
+        // Adds 1 for each value in x
+        for(i = 0;i < x.length; i++){
+            char = x.charAt(i);
+            char1 = x.charAt(i+1);
             // gets the character at i
             val = getValue(char);
             val1 = getValue(char1);
@@ -91,20 +96,21 @@ function ready() {
             if (val < 0){
                 return "No Negitives";
             }
-            if (val1<val){
-                arabic += (val - val1);
+            if (val1>val){
+                arabicval += (val1) - (val);
+                arabicval -= val1
             } else{
-                arabic += val;
+                arabicval += val;
             }
             
         }
-        console.log(arabic);
-        return (arabic);
+        console.log(arabicval);
+        return (arabicval);
     }
     
     function getValue(x){
         var result = 0;
-        // selects one of many of the code blocks for whats true
+        // selects one of many of the code blocks for whats true for X
         switch (x){
             case 'M':
                 result = 1000;
