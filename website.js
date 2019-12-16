@@ -110,7 +110,8 @@ function ready() {
     
     function getValue(x){
         var result = 0;
-        // selects one of many of the code blocks for whats true for X
+        //** selects one of many of the code blocks for whats true for X**
+        // **Ex if x = M it calls the case M code**
         switch (x){
             case 'M':
                 result = 1000;
